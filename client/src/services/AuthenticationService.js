@@ -1,15 +1,3 @@
-import Api from '@/services/Api';
+import Api from '@/services/Api'
 
-export default {    
-    register (credentials){
-        return Api().post('register', credentials)
-    }
-
-}
-
-
-// AuthenticatorService.register({ 
-//     email: 'testing@gmail.com',
-//     password: '123456'
-
-// })
+export default {register (credentials) { return Api().post('register', credentials) }}
