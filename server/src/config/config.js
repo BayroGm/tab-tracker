@@ -12,5 +12,8 @@ module.exports={
             storage:'./tabtracker.mysql'
         }
     },
+    authentication:{
+        jwtSecret: process.env.JWT_SECRET || 'secret'
+    }
    
 }
