@@ -5,16 +5,20 @@
             <a class="navbar-brand" @click="navigateTo({name:'root'})" style="padding-left: 15px; cursor: pointer;">TabTracker</a>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
+            <a class="nav-link" v-if="!$store.state.isUserLoggedIn" @click="navigateTo({name: 'songs'})" style="cursor: pointer">Navegar</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" v-if="!$store.state.isUserLoggedIn" @click="navigateTo({name: 'login'})" style="cursor: pointer">Entrar</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" v-if="!$store.state.isUserLoggedIn" @click="navigateTo({name: 'register'})" style="cursor: pointer">Registrar</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" v-if="$store.state.isUserLoggedIn" @click="logout" style="cursor: pointer">Cerrar Sesion</a>
+          </li>
         </ul>
       </div>
     </nav>
-
-    <!-- El resto de tu contenido aquí -->
   </div>
   </template>
 
@@ -24,6 +28,12 @@ export default {
     navigateTo (route) {
       this.$router.push(route)
     }
+  },
+  logout () {
+    this.$store.dispatch('setToken', null)
+    this.$store.dispatch('setUser', null)
+    // TODO: redirect to home
+    this.route.push({name: 'root'})
   }
 }
 </script>

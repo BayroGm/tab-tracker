@@ -2,7 +2,7 @@
   <div>
 
     <div class="container mt-5">
-      <h1 class="display-4 mb-4 text-primary font-weight-bold">Registro</h1>
+      <Panel title="Iniciar Sesion">
       <form>
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
@@ -14,12 +14,15 @@
         </div>
           <button @click="login" class="btn btn-primary mb-2">Iniciar Sesión</button>
       </form>
+    </Panel>
     </div>
+
   </div>
 </template>
 
 <script>
 import AuthenticationService from '../services/AuthenticationService'
+import Panel from './Panel.vue'
 
 export default {
   data () {
@@ -47,6 +50,9 @@ export default {
         this.error = error.response.data.error
       }
     }
+  },
+  components: {
+    Panel
   }
 }
 </script>
