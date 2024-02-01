@@ -21,8 +21,11 @@
               <div class="mb-2">
                 <input type="text" class="form-control" v-model="song.album" placeholder="Album" required oninvalid="this.setCustomValidity('Por favor, rellena este campo')" oninput="this.setCustomValidity('')">
               </div>
-              <div>
+              <div class="mb-2">
                 <input type="text" class="form-control" v-model="song.youtubeId" placeholder="Youtube ID" required oninvalid="this.setCustomValidity('Por favor, rellena este campo')" oninput="this.setCustomValidity('')">
+              </div>
+              <div>
+                <input type="text" class="form-control" v-model="song.albumImageUrl" placeholder="Url de la imagen" required oninvalid="this.setCustomValidity('Por favor, rellena este campo')" oninput="this.setCustomValidity('')">
               </div>
             </div>
             <div class="card-footer text-right">

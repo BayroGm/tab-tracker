@@ -1,8 +1,11 @@
 <template>
   <div class="container mt-5">
-    <panel title="Galería de Discos">
+    <panel title="GALERIA DE DISCOS">
        <router-link :to="{name: 'songs-create'}">
         <button class="btn btn-primary" type="submit">Agregar Canciones</button>
+      </router-link>
+      <router-link :to="{name: 'songsnames'}">
+        <button class="btn btn-secundary" type="submit">Ver solo nombres</button>
       </router-link>
       <div class="album-gallery">
         <div v-for="song in songs" :key="song.title" class="album" @click="navigateTo({name: 'song', params: {songId: song.id}})">
@@ -47,6 +50,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .album {

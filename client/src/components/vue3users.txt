@@ -1,0 +1,54 @@
+COMPOSITION API
+<template>
+  <Panel title="Users">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4" v-for="user in users" :key="user.id">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ user.name }}</h5>
+              <p class="card-text">{{ user.email }}</p>
+              <p class="card-text">{{ formatDate(user.createdAt) }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Panel>
+</template>
+
+<script>
+import { ref, onMounted } from 'vue';
+import Panel from './Panel.vue';
+import AuthenticationService from '../services/AuthenticationService';
+import moment from 'moment';
+
+export default {
+  components: {
+    Panel
+  },
+  setup() {
+    const users = ref([]);
+
+    const formatDate = (date) => {
+      return moment(date).format('MMMM D, YYYY');
+    };
+
+    const fetchUsers = async () => {
+      users.value = (await AuthenticationService.users()).data;
+    };
+
+    onMounted(() => {
+      fetchUsers();
+    });
+
+    return {
+      users,
+      formatDate
+    };
+  }
+};
+</script>
+
+<style>
+</style>
